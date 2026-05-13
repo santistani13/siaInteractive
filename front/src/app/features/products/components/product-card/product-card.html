@@ -1,0 +1,19 @@
+<a [routerLink]="['/products', product().id]" class="card">
+  <div class="card__badge card__badge--{{ product().tipo }}">{{ product().tipo }}</div>
+  <div class="card__body">
+    <h3 class="card__name">{{ product().nombre }}</h3>
+    <p class="card__detail">{{ product().detalle }}</p>
+  </div>
+  <div class="card__footer">
+    <span class="card__price">{{ product().precio | currency:'ARS':'symbol':'1.0-0' }}</span>
+    @if (cart.isInCart(product().id)) {
+      <div class="card__qty-controls">
+        <button class="card__qty-btn" (click)="$event.preventDefault(); cart.decreaseQuantity(product().id)">−</button>
+        <span class="card__qty">{{ cart.getQuantity(product().id) }}</span>
+        <button class="card__qty-btn" (click)="$event.preventDefault(); cart.add(product())">+</button>
+      </div>
+    } @else {
+      <button class="card__add-btn" (click)="addToCart($event)">Agregar</button>
+    }
+  </div>
+</a>

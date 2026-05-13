@@ -1,0 +1,35 @@
+<section class="confirmation">
+  @if (orderService.lastOrder(); as order) {
+    <div class="confirmation__card confirmation__card--success">
+      <div class="confirmation__icon">✅</div>
+      <h1 class="confirmation__title">¡Pedido confirmado!</h1>
+      <p class="confirmation__message">{{ order.message }}</p>
+      <div class="confirmation__details">
+        <div class="confirmation__detail-row">
+          <span>Número de pedido</span>
+          <strong>{{ order.orderId }}</strong>
+        </div>
+        <div class="confirmation__detail-row">
+          <span>Total</span>
+          <strong>{{ order.total | currency:'ARS':'symbol':'1.0-0' }}</strong>
+        </div>
+        <div class="confirmation__detail-row">
+          <span>Fecha</span>
+          <strong>{{ order.createdAt | date:'dd/MM/yyyy HH:mm' }}</strong>
+        </div>
+        <div class="confirmation__detail-row">
+          <span>Estado</span>
+          <strong class="confirmation__status">{{ order.status }}</strong>
+        </div>
+      </div>
+      <a routerLink="/products" class="confirmation__btn">Seguir comprando</a>
+    </div>
+  } @else {
+    <div class="confirmation__card confirmation__card--error">
+      <div class="confirmation__icon">❌</div>
+      <h1 class="confirmation__title">No hay información del pedido</h1>
+      <p>Parece que llegaste aquí sin completar un pedido.</p>
+      <a routerLink="/products" class="confirmation__btn">Ir al catálogo</a>
+    </div>
+  }
+</section>

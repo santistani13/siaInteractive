@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:5000/api/products)",
+      "Bash(curl -s http://localhost:4200)",
+      "Bash(mkdir -p /Users/santiagostanicio/dev/Proyectos/siaInteractive/front/src/app/features/home)",
+      "Bash(ng build *)",
+      "Bash(lsof -nP -iTCP:4200 -sTCP:LISTEN)",
+      "Bash(lsof -nP -iTCP:5000 -sTCP:LISTEN)",
+      "Bash(kill -9 6899 6905)",
+      "Bash(ng test *)",
+      "Bash(npx ng *)"
+    ],
+    "additionalDirectories": [
+      "/Users/santiagostanicio/dev/Proyectos/siaInteractive/front/src/app/features"
+    ]
+  }
+}

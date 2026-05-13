@@ -1,0 +1,86 @@
+<section class="cart-page">
+  <div class="cart-page__header">
+    <h1 class="cart-page__title">Carrito de compras</h1>
+    <a routerLink="/products" class="cart-page__back">← Seguir comprando</a>
+  </div>
+
+  @if (loading()) {
+    <div class="cart-page__layout">
+      <div class="cart-page__items">
+        @for (i of [1,2,3]; track i) {
+          <div class="cart-skeleton-item">
+            <div class="cart-sk cart-sk--name"></div>
+            <div class="cart-sk cart-sk--tipo"></div>
+            <div class="cart-sk cart-sk--controls"></div>
+            <div class="cart-sk cart-sk--price"></div>
+          </div>
+        }
+      </div>
+      <div class="cart-page__summary">
+        <div class="cart-sk cart-sk--summary-title"></div>
+        <div class="cart-sk cart-sk--summary-row"></div>
+        <div class="cart-sk cart-sk--summary-total"></div>
+        <div class="cart-sk cart-sk--btn"></div>
+      </div>
+    </div>
+  } @else if (cart.isEmpty()) {
+    <div class="cart-page__empty">
+      <p class="cart-page__empty-icon">🛒</p>
+      <h2>Tu carrito está vacío</h2>
+      <p>Agregá productos para comenzar tu pedido.</p>
+      <a routerLink="/products" class="cart-page__empty-btn">Ver productos</a>
+    </div>
+  } @else {
+    <div class="cart-page__layout">
+      <div class="cart-page__items">
+        @for (item of cart.items(); track item.product.id) {
+          <div class="cart-item">
+            <div class="cart-item__info">
+              <a [routerLink]="['/products', item.product.id]" class="cart-item__name">
+                {{ item.product.nombre }}
+              </a>
+              <span class="cart-item__tipo">{{ item.product.tipo }}</span>
+            </div>
+
+            <div class="cart-item__controls">
+              <button class="cart-item__qty-btn" (click)="cart.decreaseQuantity(item.product.id)">−</button>
+              <input
+                type="number"
+                class="cart-item__qty-input"
+                [value]="item.quantity"
+                min="1"
+                (change)="cart.updateQuantity(item.product.id, +$any($event.target).value)"
+              />
+              <button class="cart-item__qty-btn" (click)="cart.add(item.product)">+</button>
+            </div>
+
+            <div class="cart-item__price-col">
+              <span class="cart-item__subtotal">
+                {{ item.product.precio * item.quantity | currency:'ARS':'symbol':'1.0-0' }}
+              </span>
+              <span class="cart-item__unit-price">
+                {{ item.product.precio | currency:'ARS':'symbol':'1.0-0' }} c/u
+              </span>
+            </div>
+
+            <button class="cart-item__remove" (click)="cart.remove(item.product.id)" title="Eliminar">✕</button>
+          </div>
+        }
+      </div>
+
+      <div class="cart-page__summary">
+        <h2 class="cart-page__summary-title">Resumen</h2>
+        <div class="cart-page__summary-row">
+          <span>Productos ({{ cart.totalItems() }})</span>
+          <span>{{ cart.total() | currency:'ARS':'symbol':'1.0-0' }}</span>
+        </div>
+        <div class="cart-page__summary-total">
+          <span>Total</span>
+          <span>{{ cart.total() | currency:'ARS':'symbol':'1.0-0' }}</span>
+        </div>
+        <a routerLink="/order" class="cart-page__checkout-btn">Confirmar pedido →</a>
+        <button class="cart-page__clear-btn" (click)="cart.clear()">Vaciar carrito</button>
+      </div>
+    </div>
+  }
+</section>

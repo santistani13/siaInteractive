@@ -1,0 +1,99 @@
+<section class="order-summary">
+  <div class="order-summary__header">
+    <h1 class="order-summary__title">Confirmar pedido</h1>
+    <a routerLink="/cart" class="order-summary__back">← Volver al carrito</a>
+  </div>
+
+  @if (cart.isEmpty()) {
+    <div class="order-summary__empty">
+      <p>No hay productos en el carrito.</p>
+      <a routerLink="/products">Ir al catálogo</a>
+    </div>
+  } @else {
+    <div class="order-summary__layout">
+      <div class="order-summary__left">
+        <div class="order-summary__section">
+          <h2 class="order-summary__section-title">Tus datos</h2>
+          <form [formGroup]="form" class="order-summary__form">
+            <div class="form-group" [class.invalid]="form.controls.customerName.invalid && form.controls.customerName.touched">
+              <label for="name" class="form-label">Nombre completo</label>
+              <input
+                id="name"
+                type="text"
+                class="form-input"
+                placeholder="Juan García"
+                formControlName="customerName"
+              />
+              @if (form.controls.customerName.hasError('required') && form.controls.customerName.touched) {
+                <span class="form-error">El nombre es obligatorio.</span>
+              }
+            </div>
+            <div class="form-group" [class.invalid]="form.controls.customerEmail.invalid && form.controls.customerEmail.touched">
+              <label for="email" class="form-label">Email</label>
+              <input
+                id="email"
+                type="email"
+                class="form-input"
+                placeholder="juan@email.com"
+                formControlName="customerEmail"
+              />
+              @if (form.controls.customerEmail.hasError('required') && form.controls.customerEmail.touched) {
+                <span class="form-error">El email es obligatorio.</span>
+              }
+              @if (form.controls.customerEmail.hasError('email') && form.controls.customerEmail.touched) {
+                <span class="form-error">Ingresá un email válido.</span>
+              }
+            </div>
+          </form>
+        </div>
+
+        <div class="order-summary__section">
+          <h2 class="order-summary__section-title">Detalle del pedido</h2>
+          <div class="order-summary__items">
+            @for (item of cart.items(); track item.product.id) {
+              <div class="order-item">
+                <div class="order-item__name">{{ item.product.nombre }}</div>
+                <div class="order-item__meta">
+                  {{ item.quantity }} × {{ item.product.precio | currency:'ARS':'symbol':'1.0-0' }}
+                </div>
+                <div class="order-item__subtotal">
+                  {{ item.product.precio * item.quantity | currency:'ARS':'symbol':'1.0-0' }}
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="order-summary__aside">
+        <h2 class="order-summary__section-title">Total</h2>
+        <div class="order-summary__total-row">
+          <span>Productos ({{ cart.totalItems() }})</span>
+          <span>{{ cart.total() | currency:'ARS':'symbol':'1.0-0' }}</span>
+        </div>
+        <div class="order-summary__grand-total">
+          <span>Total a pagar</span>
+          <span>{{ cart.total() | currency:'ARS':'symbol':'1.0-0' }}</span>
+        </div>
+
+        @if (orderService.error()) {
+          <div class="order-summary__error">
+            ⚠️ {{ orderService.error() }}
+          </div>
+        }
+
+        <button
+          class="order-summary__submit-btn"
+          [disabled]="form.invalid || orderService.loading()"
+          (click)="submitOrder()"
+        >
+          @if (orderService.loading()) {
+            Enviando...
+          } @else {
+            Enviar pedido
+          }
+        </button>
+      </div>
+    </div>
+  }
+</section>

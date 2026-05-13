@@ -1,0 +1,98 @@
+<div class="home">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__content">
+      <h1 class="hero__title">
+        Bienvenido a <span class="hero__brand">SIAMarket</span>
+      </h1>
+      <p class="hero__subtitle">
+        Tu supermercado online — almacén, bebidas, congelados y más, todo en un lugar.
+      </p>
+      <a routerLink="/products" class="hero__cta">Ver todos los productos →</a>
+    </div>
+    <div class="hero__glow hero__glow--1"></div>
+    <div class="hero__glow hero__glow--2"></div>
+  </section>
+
+  <!-- Category chips -->
+  <section class="categories">
+    <a routerLink="/products" class="cat-chip cat-chip--all">
+      <span>🛒</span> Todos
+    </a>
+    @for (cat of categories; track cat.tipo) {
+      <a
+        routerLink="/products"
+        [queryParams]="{ tipo: cat.tipo }"
+        class="cat-chip"
+        [style.--chip-color]="cat.color"
+      >
+        <span>{{ cat.icon }}</span> {{ cat.label }}
+      </a>
+    }
+  </section>
+
+  <!-- Sliders por categoría -->
+  @if (productService.loading()) {
+    <div class="home__loading">
+      @for (i of [1,2,3]; track i) {
+        <div class="slider-skeleton">
+          <div class="slider-sk slider-sk--title"></div>
+          <div class="slider-sk-row">
+            @for (j of [1,2,3,4,5]; track j) {
+              <div class="slider-sk slider-sk--card"></div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    @for (slider of sliders(); track slider.tipo) {
+      <section class="slider-section">
+        <div class="slider-section__header">
+          <h2 class="slider-section__title">
+            <span class="slider-section__icon">{{ slider.icon }}</span>
+            {{ slider.label }}
+          </h2>
+          <a
+            routerLink="/products"
+            [queryParams]="{ tipo: slider.tipo }"
+            class="slider-section__link"
+          >Ver todos →</a>
+        </div>
+
+        <div class="slider">
+          <div
+            class="slider__track"
+            [style.--item-count]="slider.products.length"
+          >
+            @for (product of slider.loopItems; track $index) {
+              <a class="slide-card" [routerLink]="['/products', product.id]">
+                <span
+                  class="slide-card__badge"
+                  [style.background]="slider.color"
+                >{{ slider.label }}</span>
+                <h3 class="slide-card__name">{{ product.nombre }}</h3>
+                <p class="slide-card__detail">{{ product.detalle }}</p>
+                <div class="slide-card__footer">
+                  <span class="slide-card__price">
+                    {{ product.precio | currency:'ARS':'symbol':'1.0-0' }}
+                  </span>
+                  @if (cart.isInCart(product.id)) {
+                    <span class="slide-card__in-cart">✓ En carrito</span>
+                  } @else {
+                    <button
+                      class="slide-card__btn"
+                      (click)="addToCart($event, product)"
+                    >Agregar</button>
+                  }
+                </div>
+              </a>
+            }
+          </div>
+        </div>
+      </section>
+    }
+  }
+
+</div>

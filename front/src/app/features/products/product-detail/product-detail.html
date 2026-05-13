@@ -1,0 +1,40 @@
+<div class="detail">
+  <a routerLink="/products" class="detail__back">← Volver a productos</a>
+
+  @if (loading()) {
+    <div class="detail__skeleton-card">
+      <div class="detail__sk detail__sk--badge"></div>
+      <div class="detail__sk detail__sk--title"></div>
+      <div class="detail__sk detail__sk--line"></div>
+      <div class="detail__sk detail__sk--line detail__sk--line-short"></div>
+      <div class="detail__sk detail__sk--line"></div>
+      <div class="detail__sk detail__sk--footer"></div>
+    </div>
+  } @else if (product(); as p) {
+    <div class="detail__card">
+      <div class="detail__badge detail__badge--{{ p.tipo }}">{{ p.tipo }}</div>
+      <h1 class="detail__name">{{ p.nombre }}</h1>
+      <p class="detail__description">{{ p.detalle }}</p>
+      <div class="detail__footer">
+        <span class="detail__price">{{ p.precio | currency:'ARS':'symbol':'1.0-0' }}</span>
+        @if (cart.isInCart(p.id)) {
+          <div class="detail__qty-controls">
+            <button class="detail__qty-btn" (click)="cart.decreaseQuantity(p.id)">−</button>
+            <span class="detail__qty">{{ cart.getQuantity(p.id) }} en carrito</span>
+            <button class="detail__qty-btn" (click)="cart.add(p)">+</button>
+          </div>
+        } @else {
+          <button class="detail__add-btn" (click)="cart.add(p)">Agregar al carrito</button>
+        }
+      </div>
+      @if (cart.isInCart(p.id)) {
+        <a routerLink="/cart" class="detail__go-cart">Ver carrito →</a>
+      }
+    </div>
+  } @else {
+    <div class="detail__not-found">
+      <p>Producto no encontrado.</p>
+      <a routerLink="/products">Volver al catálogo</a>
+    </div>
+  }
+</div>

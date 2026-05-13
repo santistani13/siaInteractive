@@ -1,0 +1,50 @@
+<aside class="filters" [formGroup]="form">
+  <div class="filters__header">
+    <h2 class="filters__title">Filtros</h2>
+    @if (hasActiveFilters) {
+      <button class="filters__clear" (click)="clearFilters()">Limpiar</button>
+    }
+  </div>
+
+  <div class="filters__group">
+    <label class="filters__label" for="search">Buscar</label>
+    <input
+      id="search"
+      type="text"
+      class="filters__input"
+      placeholder="Nombre o descripción..."
+      formControlName="query"
+    />
+  </div>
+
+  <div class="filters__group">
+    <label class="filters__label" for="tipo">Categoría</label>
+    <select id="tipo" class="filters__select" formControlName="tipo">
+      <option value="">Todas</option>
+      @for (tipo of tipos(); track tipo) {
+        <option [value]="tipo">{{ tipo | titlecase }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="filters__group">
+    <label class="filters__label">Precio</label>
+    <div class="filters__price-row">
+      <input
+        type="number"
+        class="filters__input filters__input--half"
+        placeholder="Min"
+        formControlName="minPrice"
+        min="0"
+      />
+      <span class="filters__price-sep">–</span>
+      <input
+        type="number"
+        class="filters__input filters__input--half"
+        placeholder="Max"
+        formControlName="maxPrice"
+        min="0"
+      />
+    </div>
+  </div>
+</aside>

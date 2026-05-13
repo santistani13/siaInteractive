@@ -1,0 +1,23 @@
+.main-content {
+  min-height: calc(100vh - 64px);
+  padding: 24px 16px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.route-loading-bar {
+  position: fixed;
+  top: 0;
+  left: -60%;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #e94560, #ff6b85, #e94560, transparent);
+  z-index: 9999;
+  border-radius: 0 2px 2px 0;
+  animation: route-progress 900ms ease-in-out infinite;
+}
+
+@keyframes route-progress {
+  0%   { left: -55%; }
+  100% { left: 110%; }
+}

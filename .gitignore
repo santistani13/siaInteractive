@@ -1,0 +1,13 @@
+# Node
+node_modules/
+dist/
+.angular/
+
+# .NET
+back/bin/
+back/obj/
+back/*.user
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,15 @@
+{
+  "name": "sia-interactive",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm install --prefix front && dotnet restore back/SiaInteractiveApi.csproj",
+    "predev": "node -e \"const {execSync:e}=require('child_process');[4200,5001].forEach(p=>{try{const pids=e('lsof -nP -iTCP:'+p+' -sTCP:LISTEN 2>/dev/null').toString().split('\\n').slice(1).map(l=>l.trim().split(/\\s+/)[1]).filter(Boolean);pids.forEach(pid=>e('kill -9 '+pid))}catch(_){}});require('child_process').execSync('sleep 1')\"",
+    "dev": "concurrently --kill-others-on-fail --names \"BACK,FRONT\" --prefix-colors \"cyan,magenta\" \"dotnet run --project back/SiaInteractiveApi.csproj\" \"npm start --prefix front\"",
+    "dev:front": "npm start --prefix front",
+    "dev:back": "dotnet run --project back/SiaInteractiveApi.csproj",
+    "stop": "node -e \"const e=require('child_process').execSync;['ng serve','dotnet run','concurrently'].forEach(p=>{try{e('pkill -f \"'+p+'\"')}catch(_){}})\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

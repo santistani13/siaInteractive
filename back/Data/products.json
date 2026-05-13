@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "nombre": "Arroz Largo Fino",
+    "detalle": "Arroz largo fino de primera calidad, ideal para acompañar todo tipo de platos. Bolsa de 1kg.",
+    "tipo": "almacen",
+    "precio": 1850.00
+  },
+  {
+    "id": 2,
+    "nombre": "Harina 000 Blanca",
+    "detalle": "Harina de trigo triple cero, perfecta para panificación y repostería. Bolsa de 1kg.",
+    "tipo": "almacen",
+    "precio": 1200.00
+  },
+  {
+    "id": 3,
+    "nombre": "Aceite de Girasol",
+    "detalle": "Aceite de girasol puro de alta calidad, bajo en grasas saturadas. Botella de 1.5 litros.",
+    "tipo": "almacen",
+    "precio": 2750.00
+  },
+  {
+    "id": 4,
+    "nombre": "Fideos Spaghetti",
+    "detalle": "Spaghetti de sémola de trigo candeal, cocción al dente garantizada. Paquete de 500g.",
+    "tipo": "almacen",
+    "precio": 980.00
+  },
+  {
+    "id": 5,
+    "nombre": "Salsa de Tomate Casera",
+    "detalle": "Salsa de tomate de cocción lenta con hierbas aromáticas. Frasco de 420g.",
+    "tipo": "almacen",
+    "precio": 1450.00
+  },
+  {
+    "id": 6,
+    "nombre": "Azúcar Blanca",
+    "detalle": "Azúcar refinada de caña, pureza garantizada. Bolsa de 1kg.",
+    "tipo": "almacen",
+    "precio": 1100.00
+  },
+  {
+    "id": 7,
+    "nombre": "Lentejas",
+    "detalle": "Lentejas secas de primera selección, ricas en proteínas y fibras. Bolsa de 500g.",
+    "tipo": "almacen",
+    "precio": 870.00
+  },
+  {
+    "id": 8,
+    "nombre": "Atún al Natural",
+    "detalle": "Atún en agua, sin agregado de aceite, alto contenido proteico. Lata de 170g.",
+    "tipo": "almacen",
+    "precio": 1350.00
+  },
+  {
+    "id": 9,
+    "nombre": "Pizza Muzzarella Congelada",
+    "detalle": "Pizza de muzzarella con masa crocante, lista en 15 minutos al horno. Tamaño mediano 450g.",
+    "tipo": "congelados",
+    "precio": 3200.00
+  },
+  {
+    "id": 10,
+    "nombre": "Helado de Chocolate",
+    "detalle": "Helado cremoso de chocolate con trozos de cacao amargo. Pote de 1 litro.",
+    "tipo": "congelados",
+    "precio": 2800.00
+  },
+  {
+    "id": 11,
+    "nombre": "Pollo Entero Congelado",
+    "detalle": "Pollo entero eviscerado y limpio, listo para cocinar. Peso aproximado 1.8kg.",
+    "tipo": "congelados",
+    "precio": 5500.00
+  },
+  {
+    "id": 12,
+    "nombre": "Vegetales Mixtos Congelados",
+    "detalle": "Mezcla de arvejas, choclo y zanahoria congelados al instante. Bolsa de 500g.",
+    "tipo": "congelados",
+    "precio": 1600.00
+  },
+  {
+    "id": 13,
+    "nombre": "Empanadas de Carne Congeladas",
+    "detalle": "Empanadas criollas de carne cortada a cuchillo, masa casera. Pack de 12 unidades.",
+    "tipo": "congelados",
+    "precio": 4200.00
+  },
+  {
+    "id": 14,
+    "nombre": "Medallones de Merluza",
+    "detalle": "Medallones de merluza rebozados listos para freír o al horno. Pack de 500g.",
+    "tipo": "congelados",
+    "precio": 3800.00
+  },
+  {
+    "id": 15,
+    "nombre": "Papas Fritas Congeladas",
+    "detalle": "Papas precocidas y congeladas, crujientes por fuera y tiernas por dentro. Bolsa de 700g.",
+    "tipo": "congelados",
+    "precio": 1900.00
+  },
+  {
+    "id": 16,
+    "nombre": "Papas Fritas Clásicas",
+    "detalle": "Papas fritas onduladas sabor original, snack irresistible. Bolsa de 120g.",
+    "tipo": "kiosco",
+    "precio": 850.00
+  },
+  {
+    "id": 17,
+    "nombre": "Alfajor Doble Chocolate",
+    "detalle": "Alfajor triple con dulce de leche bañado en chocolate con leche. Unidad 80g.",
+    "tipo": "kiosco",
+    "precio": 750.00
+  },
+  {
+    "id": 18,
+    "nombre": "Galletas de Agua",
+    "detalle": "Galletas crackers livianas, ideales para acompañar con queso o fiambres. Pack 200g.",
+    "tipo": "kiosco",
+    "precio": 680.00
+  },
+  {
+    "id": 19,
+    "nombre": "Chicles Menta",
+    "detalle": "Chicles de menta intensa, sin azúcar agregada. Blíster de 10 unidades.",
+    "tipo": "kiosco",
+    "precio": 350.00
+  },
+  {
+    "id": 20,
+    "nombre": "Caramelos Surtidos",
+    "detalle": "Mix de caramelos de diferentes sabores, frutales y cremosos. Bolsa de 150g.",
+    "tipo": "kiosco",
+    "precio": 490.00
+  },
+  {
+    "id": 21,
+    "nombre": "Barrita Cereal con Chocolate",
+    "detalle": "Barrita de cereal con chips de chocolate, rica en fibra y vitaminas. Unidad 30g.",
+    "tipo": "kiosco",
+    "precio": 420.00
+  },
+  {
+    "id": 22,
+    "nombre": "Detergente Lavavajillas",
+    "detalle": "Detergente concentrado para vajilla, elimina grasa y bacterias. Botella de 750ml.",
+    "tipo": "limpieza",
+    "precio": 1750.00
+  },
+  {
+    "id": 23,
+    "nombre": "Jabón en Polvo",
+    "detalle": "Jabón en polvo para ropa blanca y de color, con suavizante incorporado. Bolsa 1kg.",
+    "tipo": "limpieza",
+    "precio": 2200.00
+  },
+  {
+    "id": 24,
+    "nombre": "Limpiador Multiuso",
+    "detalle": "Limpiador líquido para superficies duras, desodorizante y desengrasante. Botella 500ml.",
+    "tipo": "limpieza",
+    "precio": 1300.00
+  },
+  {
+    "id": 25,
+    "nombre": "Lavandina Concentrada",
+    "detalle": "Lavandina al 55g/L, desinfectante y blanqueador potente. Botella de 1 litro.",
+    "tipo": "limpieza",
+    "precio": 980.00
+  },
+  {
+    "id": 26,
+    "nombre": "Jugo de Naranja Natural",
+    "detalle": "Jugo de naranja 100% exprimida, sin conservantes ni colorantes. Botella 1 litro.",
+    "tipo": "bebidas",
+    "precio": 2100.00
+  },
+  {
+    "id": 27,
+    "nombre": "Agua Mineral Sin Gas",
+    "detalle": "Agua mineral natural de manantial, baja en sodio. Botella de 1.5 litros.",
+    "tipo": "bebidas",
+    "precio": 650.00
+  },
+  {
+    "id": 28,
+    "nombre": "Gaseosa Cola",
+    "detalle": "Gaseosa cola clásica refrescante, presentación familiar. Botella de 2.25 litros.",
+    "tipo": "bebidas",
+    "precio": 1800.00
+  },
+  {
+    "id": 29,
+    "nombre": "Leche Entera",
+    "detalle": "Leche entera de larga vida UTH, rica en calcio y vitamina D. Caja de 1 litro.",
+    "tipo": "bebidas",
+    "precio": 1400.00
+  },
+  {
+    "id": 30,
+    "nombre": "Cerveza Rubia Lager",
+    "detalle": "Cerveza rubia tipo Lager, suave y refrescante. Lata de 473ml.",
+    "tipo": "bebidas",
+    "precio": 1150.00
+  }
+]

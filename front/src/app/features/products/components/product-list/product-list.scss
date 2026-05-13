@@ -1,0 +1,42 @@
+.product-list {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 24px;
+  align-items: start;
+
+  @media (max-width: 768px) { grid-template-columns: 1fr; }
+
+  &__sidebar { @media (max-width: 768px) { order: -1; } }
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  &__title { font-size: 1.5rem; font-weight: 800; color: var(--text); margin: 0; }
+  &__count { color: var(--text-muted); font-size: 0.9rem; }
+
+  &__grid,
+  &__skeleton-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+    &-icon { font-size: 3rem; margin-bottom: 8px; }
+  }
+}
+
+.skeleton-card {
+  height: 220px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, var(--sk-1) 25%, var(--sk-2) 50%, var(--sk-1) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}

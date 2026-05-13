@@ -1,0 +1,21 @@
+<header class="header">
+  <div class="header__inner">
+    <a routerLink="/" class="header__logo">
+      <span class="header__logo-icon">🛒</span>
+      <span class="header__logo-text">SIA<strong>Market</strong></span>
+    </a>
+
+    <nav class="header__nav">
+      <a routerLink="/" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" class="header__nav-link">Inicio</a>
+      <a routerLink="/products" routerLinkActive="active" class="header__nav-link">
+        Productos
+      </a>
+      <a routerLink="/cart" routerLinkActive="active" class="header__nav-link header__nav-link--cart">
+        Carrito
+        @if (cart.totalItems() > 0) {
+          <span class="header__badge">{{ cart.totalItems() }}</span>
+        }
+      </a>
+    </nav>
+  </div>
+</header>

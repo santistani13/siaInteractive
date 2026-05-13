@@ -1,0 +1,37 @@
+<section class="product-list">
+  <div class="product-list__sidebar">
+    <app-product-filters
+      [tipos]="productService.tipos()"
+      [initialTipo]="initialTipo()"
+      (filtersChange)="onFiltersChange($event)"
+    />
+  </div>
+
+  <div class="product-list__main">
+    <div class="product-list__header">
+      <h1 class="product-list__title">Productos</h1>
+      <span class="product-list__count">
+        {{ productService.products().length }} resultado{{ productService.products().length !== 1 ? 's' : '' }}
+      </span>
+    </div>
+
+    @if (productService.loading()) {
+      <div class="product-list__skeleton-grid">
+        @for (i of [1,2,3,4,5,6]; track i) {
+          <div class="skeleton-card"></div>
+        }
+      </div>
+    } @else if (productService.products().length === 0) {
+      <div class="product-list__empty">
+        <p class="product-list__empty-icon">🔍</p>
+        <p>No se encontraron productos con los filtros seleccionados.</p>
+      </div>
+    } @else {
+      <div class="product-list__grid">
+        @for (product of productService.products(); track product.id) {
+          <app-product-card [product]="product" />
+        }
+      </div>
+    }
+  </div>
+</section>
